@@ -1,0 +1,7 @@
+{
+  "name": "anchor-memory",
+  "version": "0.1.0",
+  "description": "Verifiable, self-policing project memory for coding agents.",
+  "license": "MIT",
+  "skills": "../../skills/"
+}

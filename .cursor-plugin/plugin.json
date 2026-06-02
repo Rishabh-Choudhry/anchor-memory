@@ -1,0 +1,11 @@
+{
+  "name": "anchor-memory",
+  "version": "0.1.0",
+  "description": "Verifiable, self-policing project memory for coding agents.",
+  "author": { "name": "Rishabh Choudhry" },
+  "homepage": "https://github.com/Rishabh-Choudhry/anchor-memory",
+  "repository": "https://github.com/Rishabh-Choudhry/anchor-memory",
+  "license": "MIT",
+  "keywords": ["agent memory", "cursor", "claude code", "codex", "gemini", "llm memory"],
+  "skills": "./skills/"
+}
