@@ -1,0 +1,22 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "anchor-memory",
+  "id": "anchor-memory",
+  "owner": { "name": "Rishabh Choudhry" },
+  "metadata": {
+    "description": "Anchor — verifiable, self-policing memory for coding agents.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "anchor-memory",
+      "source": "./",
+      "description": "Verifiable agent memory: ledger + @meta anchors + integrity hooks + scaffold skill.",
+      "version": "0.1.0",
+      "author": { "name": "Rishabh Choudhry" },
+      "keywords": ["agent memory", "claude code", "codex", "cursor", "gemini",
+                   "ai agent context", "llm memory", "hooks", "skills"],
+      "category": "workflow"
+    }
+  ]
+}
