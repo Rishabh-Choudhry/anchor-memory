@@ -8,7 +8,13 @@
     ],
     "Stop": [
       { "hooks": [
-        { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/memory-integrity-gate.sh" }
+        { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/memory-integrity-gate.sh" },
+        { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-checkpoint.sh" }
+      ] }
+    ],
+    "PreCompact": [
+      { "hooks": [
+        { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-checkpoint.sh" }
       ] }
     ]
   }

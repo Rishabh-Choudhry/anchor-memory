@@ -26,7 +26,7 @@ Scaffold the Anchor memory system into the current project. Safe to re-run
 4. **Write files** (skip+report any that already exist; offer to diff/overwrite):
    - `AGENTS.md`, `CLAUDE.md`, `GEMINI.md` ← templates, with `{{PROJECT_NAME}}`,
      `{{MEMORY_DIR}}`, `{{BUILD_CMD}}`, `{{DATE}}` substituted.
-   - `memory/FACTS.md`, `memory/decisions.md`, `memory/status.md`, `memory/README.md`.
+   - `memory/FACTS.md`, `memory/decisions.md`, `memory/status.md`, `memory/README.md`, `memory/HANDOFF.md`.
    - `anchor.config.json` ← template with substitutions.
 
 5. **Wire hooks.**
@@ -36,6 +36,7 @@ Scaffold the Anchor memory system into the current project. Safe to re-run
      `scripts/memory_lint.py` into `.anchor/scripts/`, then merge
      `templates/settings.fragment.json` into `.claude/settings.json`
      (create the file if absent; merge arrays, don't clobber existing hooks).
+   - Add `.anchor/session-state.md` to the project `.gitignore` (the live auto-saved state is local-only; the vendored `.anchor/` engine stays tracked).
 
 6. **Verify.** Run `python3 <linter> --root . ` and report the result. Then print a
    3-line "what changed + next steps" summary (edit AGENTS.md project sections;

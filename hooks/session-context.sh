@@ -18,4 +18,15 @@ if [ -f "$ROOT/$MEM_DIR/status.md" ]; then
   echo "## Current Status"
   sed -n '/^---$/,/^---$/!p' "$ROOT/$MEM_DIR/status.md" | head -30
 fi
+
+if [ -f "$ROOT/memory/HANDOFF.md" ]; then
+  echo ""
+  echo "## Handoff — intent / next step (memory/HANDOFF.md)"
+  head -40 "$ROOT/memory/HANDOFF.md"
+fi
+if [ -f "$ROOT/.anchor/session-state.md" ]; then
+  echo ""
+  echo "## Last auto-saved state (.anchor/session-state.md)"
+  head -40 "$ROOT/.anchor/session-state.md"
+fi
 exit 0

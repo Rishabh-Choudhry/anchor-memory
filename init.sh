@@ -31,6 +31,7 @@ write templates/memory/FACTS.md.tmpl memory/FACTS.md
 write templates/memory/decisions.md.tmpl memory/decisions.md
 write templates/memory/status.md.tmpl memory/status.md
 write templates/memory/README.md memory/README.md
+write templates/memory/HANDOFF.md.tmpl memory/HANDOFF.md
 
 # Vendor the engine + hooks for non-plugin use
 mkdir -p "$ROOT/.anchor/hooks" "$ROOT/.anchor/scripts"
@@ -58,4 +59,10 @@ for event, entries in frag.get("hooks", {}).items():
 json.dump(settings, open(settings_path, "w"), indent=2)
 print("wired hooks into .claude/settings.json")
 PY
+# Keep the auto-saved live state out of git (the vendored .anchor engine stays tracked)
+GI="$ROOT/.gitignore"
+if ! { [ -f "$GI" ] && grep -qxF ".anchor/session-state.md" "$GI"; }; then
+  echo ".anchor/session-state.md" >> "$GI"
+  echo "gitignored .anchor/session-state.md"
+fi
 python3 "$ROOT/.anchor/scripts/memory_lint.py" --root "$ROOT" || true

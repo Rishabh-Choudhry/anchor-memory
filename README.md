@@ -38,6 +38,9 @@ ledger, and wires the integrity hooks. Done in under a minute.
 - **Verifiable memory** — `@meta` anchors checked against the repo (`file_exists`,
   `file_grep`, `json_field`, `golden_metric`).
 - **Closed-loop hooks** — drift surfaced at session start; capture nudged at end.
+- **Never lose a session** — a checkpoint hook auto-saves your working state every
+  turn (and before compaction) to `.anchor/session-state.md`; `/handoff` records
+  intent in `memory/HANDOFF.md`; both surface automatically on your next start.
 - **Skills** — `memory-init`, `recall`, `capture-decision`, `update-status`,
   `session-wrapup`, `review-pr`.
 

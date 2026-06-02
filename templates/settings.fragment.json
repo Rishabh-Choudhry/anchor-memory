@@ -8,7 +8,13 @@
     ],
     "Stop": [
       { "hooks": [
-        { "type": "command", "command": "$CLAUDE_PROJECT_DIR/.anchor/hooks/memory-integrity-gate.sh" }
+        { "type": "command", "command": "$CLAUDE_PROJECT_DIR/.anchor/hooks/memory-integrity-gate.sh" },
+        { "type": "command", "command": "$CLAUDE_PROJECT_DIR/.anchor/hooks/session-checkpoint.sh" }
+      ] }
+    ],
+    "PreCompact": [
+      { "hooks": [
+        { "type": "command", "command": "$CLAUDE_PROJECT_DIR/.anchor/hooks/session-checkpoint.sh" }
       ] }
     ]
   }
