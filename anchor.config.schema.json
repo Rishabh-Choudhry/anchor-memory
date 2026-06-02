@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "Anchor project config",
+  "type": "object",
+  "required": ["memory"],
+  "properties": {
+    "project_name": { "type": "string" },
+    "memory": {
+      "type": "object",
+      "required": ["dir", "ledger_files"],
+      "properties": {
+        "dir": { "type": "string", "default": "memory" },
+        "ledger_files": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["memory/decisions.md", "memory/FACTS.md"]
+        },
+        "auto_memory_dir": { "type": "string" }
+      }
+    },
+    "watch_globs": {
+      "type": "array",
+      "description": "Code paths whose changes should trigger the memory-capture nudge.",
+      "items": { "type": "string" },
+      "default": ["src/**", "lib/**", "app/**"]
+    },
+    "review": {
+      "type": "object",
+      "properties": {
+        "license_allowlist": { "type": "array", "items": { "type": "string" } },
+        "invariants": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}
