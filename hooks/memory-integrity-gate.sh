@@ -9,8 +9,8 @@ cd "$ROOT" || exit 0
 CHANGED="$(git status --porcelain 2>/dev/null)"
 [ -z "$CHANGED" ] && exit 0
 
-WATCH="$(anchor_cfg watch_globs $'src/\nlib/\napp/')"
-LEDGER="$(anchor_cfg memory.ledger_files $'memory/decisions.md\nmemory/FACTS.md')"
+WATCH="$(anchor_cfg watch_globs "$(printf 'src/\nlib/\napp/')")"
+LEDGER="$(anchor_cfg memory.ledger_files "$(printf 'memory/decisions.md\nmemory/FACTS.md')")"
 
 code_changed=0; mem_changed=0
 while IFS= read -r line; do
