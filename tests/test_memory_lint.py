@@ -65,10 +65,10 @@ class TestFileAnchors(unittest.TestCase):
 
     def test_scope_after_disambiguates(self):
         self._write("p.txt", "config A\nCURRENT_PROJECT_VERSION = 1\n"
-                             "name = GymVision\nCURRENT_PROJECT_VERSION = 12\n")
+                             "name = MyApp\nCURRENT_PROJECT_VERSION = 12\n")
         a = {"kind": "file_grep", "file": "p.txt",
              "pattern": "CURRENT_PROJECT_VERSION = 12",
-             "scope_after": "name = GymVision", "expect": "present"}
+             "scope_after": "name = MyApp", "expect": "present"}
         self.assertEqual(ml.evaluate_anchor(a, root=self.tmp).status, "MATCH")
 
     def test_file_exists_present(self):

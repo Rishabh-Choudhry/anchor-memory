@@ -10,6 +10,6 @@ jobs:
       - name: Lint tests
         run: python3 -m unittest discover -s tests -v
       - name: Validate plugin JSON
-        run: python3 -c "import json,glob; [json.load(open(f)) for f in glob.glob('.*-plugin/*.json')+glob.glob('.opencode/plugins/*.json')+['.claude-plugin/marketplace.json']]; print('JSON OK')"
+        run: python3 -c "import json; files=['.claude-plugin/marketplace.json','.claude-plugin/plugin.json','.codex-plugin/plugin.json','.cursor-plugin/plugin.json','.opencode/plugins/anchor.json','anchor.config.schema.json','hooks/hooks.json','templates/settings.fragment.json','templates/anchor.config.json.tmpl']; [json.load(open(f)) for f in files]; print('JSON OK')"
       - name: Shellcheck hooks
         run: sudo apt-get update && sudo apt-get install -y shellcheck && shellcheck hooks/*.sh init.sh
