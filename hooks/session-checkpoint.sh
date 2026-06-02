@@ -13,7 +13,7 @@ mkdir -p "$STATE_DIR"
   echo "# Session state (auto-saved — last known reality)"
   echo
   printf "_Updated: %s_  ·  branch: \`%s\`\n\n" \
-    "$(date '+%Y-%m-%d %H:%M:%S')" "$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo n/a)"
+    "$(date '+%Y-%m-%d %H:%M:%S')" "$(git symbolic-ref --short HEAD 2>/dev/null || echo n/a)"
   echo "## Uncommitted changes"
   status="$(git status --short 2>/dev/null)"
   if [ -n "$status" ]; then
