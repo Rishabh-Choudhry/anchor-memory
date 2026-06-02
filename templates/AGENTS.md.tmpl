@@ -1,0 +1,45 @@
+# {{PROJECT_NAME}} — Agent Instructions
+
+> Behavioral guidelines below adapted from
+> [andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills) (MIT).
+> See CREDITS.md.
+
+## How to work
+
+**1. Think before coding.** State assumptions; if multiple interpretations exist, present them — don't pick silently. If unclear, stop and ask.
+
+**2. Simplicity first.** Minimum code that solves the problem. No speculative features, abstractions, or config that wasn't requested.
+
+**3. Surgical changes.** Touch only what you must. Match existing style. Don't refactor what isn't broken. Remove only the orphans your change created.
+
+**4. Goal-driven execution.** Turn each task into a verifiable success criterion, then loop until it's met.
+
+## Source of truth (read first every session)
+
+- `{{MEMORY_DIR}}/FACTS.md` — current facts + the **tried-and-failed list**. Read before proposing any new approach.
+- `{{MEMORY_DIR}}/decisions.md` — load-bearing decisions. **Check before "fixing" something that looks wrong.**
+- `{{MEMORY_DIR}}/status.md` — what's done / blocked / next.
+
+## Build & run
+
+```bash
+{{BUILD_CMD}}
+```
+
+## Project structure
+
+<!-- Describe top-level dirs and their one-line responsibility. -->
+
+## Key decisions (DO NOT change without discussion)
+
+<!-- Load-bearing constraints. Each links to a decisions.md entry. -->
+
+## Memory ritual (MANDATORY at end of session)
+
+1. Update `decisions.md` if any load-bearing decision was made/changed (date + WHY + impact).
+2. Update `status.md` if phase progress changed.
+3. Mark superseded entries `status: superseded` — don't delete history.
+
+## Compaction instructions
+
+Preserve: FACTS.md in full, the source-of-truth pointers, Key decisions, current task context, and any file paths/line numbers in the active task. Drop: verbose tool output, intermediate search results, already-committed diffs.
