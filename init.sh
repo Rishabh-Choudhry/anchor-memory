@@ -7,8 +7,16 @@ SRC="$(cd "$(dirname "$0")" && pwd)"
 NAME="${1:-$(basename "$ROOT")}"
 DATE="$(date +%Y-%m-%d)"
 
-sub() { sed -e "s/{{PROJECT_NAME}}/$NAME/g" -e "s/{{MEMORY_DIR}}/memory/g" \
-            -e "s/{{DATE}}/$DATE/g" -e "s/{{BUILD_CMD}}/# add your build command/g" "$1"; }
+sub() {
+  python3 - "$1" "$NAME" "$DATE" <<'PY'
+import sys
+src, name, date = sys.argv[1], sys.argv[2], sys.argv[3]
+t = open(src, encoding="utf-8").read()
+t = t.replace("{{PROJECT_NAME}}", name).replace("{{MEMORY_DIR}}", "memory")
+t = t.replace("{{DATE}}", date).replace("{{BUILD_CMD}}", "# add your build command")
+sys.stdout.write(t)
+PY
+}
 
 write() { # write <template> <dest>
   if [ -e "$ROOT/$2" ]; then echo "skip (exists): $2"; else
@@ -29,5 +37,25 @@ mkdir -p "$ROOT/.anchor/hooks" "$ROOT/.anchor/scripts"
 cp "$SRC"/hooks/*.sh "$ROOT/.anchor/hooks/"; chmod +x "$ROOT/.anchor/hooks/"*.sh
 cp "$SRC"/scripts/memory_lint.py "$ROOT/.anchor/scripts/"
 echo "Vendored hooks + linter into .anchor/"
-echo "Next: merge templates/settings.fragment.json into .claude/settings.json"
+# Auto-wire hooks for non-plugin (template) use: merge fragment into .claude/settings.json
+python3 - "$SRC/templates/settings.fragment.json" "$ROOT/.claude/settings.json" <<'PY'
+import json, os, sys
+frag_path, settings_path = sys.argv[1], sys.argv[2]
+frag = json.load(open(frag_path))
+os.makedirs(os.path.dirname(settings_path), exist_ok=True)
+settings = {}
+if os.path.isfile(settings_path):
+    try:
+        settings = json.load(open(settings_path))
+    except (json.JSONDecodeError, OSError):
+        settings = {}
+hooks = settings.setdefault("hooks", {})
+for event, entries in frag.get("hooks", {}).items():
+    existing = hooks.setdefault(event, [])
+    for e in entries:
+        if e not in existing:
+            existing.append(e)
+json.dump(settings, open(settings_path, "w"), indent=2)
+print("wired hooks into .claude/settings.json")
+PY
 python3 "$ROOT/.anchor/scripts/memory_lint.py" --root "$ROOT" || true
