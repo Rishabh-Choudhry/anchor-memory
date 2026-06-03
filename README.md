@@ -2,6 +2,8 @@
 
 > The memory system for coding agents that catches itself lying.
 
+![Anchor flags a fact that has drifted from the live repo, before the agent trusts it](assets/demo.gif)
+
 Anchor gives Claude Code / Codex / Cursor / Gemini a **verifiable, self-policing
 project ledger**. Facts and decisions carry machine-checkable `@meta` anchors; a
 linter + hooks flag any entry that has drifted from the live repo — *before* the
