@@ -1,7 +1,6 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "anchor-memory",
-  "id": "anchor-memory",
   "owner": { "name": "Rishabh Choudhry" },
   "metadata": {
     "description": "Anchor — verifiable, self-policing memory for coding agents.",

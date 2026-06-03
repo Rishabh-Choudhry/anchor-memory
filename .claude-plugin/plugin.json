@@ -2,7 +2,7 @@
   "name": "anchor-memory",
   "description": "Anchor: verifiable, self-policing project memory for coding agents — ledger + @meta anchors + integrity hooks + memory-init scaffold.",
   "version": "0.1.0",
-  "author": { "name": "Rishabh Choudhry" },
+  "author": { "name": "Rishabh Choudhry", "url": "https://github.com/Rishabh-Choudhry" },
   "homepage": "https://github.com/Rishabh-Choudhry/anchor-memory",
   "repository": "https://github.com/Rishabh-Choudhry/anchor-memory",
   "license": "MIT",
