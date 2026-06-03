@@ -3,3 +3,9 @@ __pycache__/
 *.pyc
 .anchor-tmp/
 node_modules/
+
+# Local-only internal notes (handoffs, marketing context) — not part of the public template
+notes/
+
+# Anchor's own auto-saved session state when dogfooding in this repo
+.anchor/session-state.md
